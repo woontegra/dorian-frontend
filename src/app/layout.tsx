@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     default: APP_NAME,
     template: `%s | ${APP_NAME}`,
   },
-  description: 'Kurumsal web sitesi ve yÃ¶netim paneli altyapÄ±sÄ±.',
+  description: 'Kurumsal web sitesi ve yönetim paneli altyapısı.',
   applicationName: APP_NAME,
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
     siteName: APP_NAME,
     title: APP_NAME,
-    description: 'Kurumsal web sitesi ve yÃ¶netim paneli altyapÄ±sÄ±.',
+    description: 'Kurumsal web sitesi ve yönetim paneli altyapısı.',
   },
   robots: {
     index: true,
@@ -32,4 +32,3 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
-

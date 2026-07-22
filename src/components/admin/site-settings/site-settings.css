@@ -1,0 +1,699 @@
+﻿/* Site Ayarları — yalnızca /admin/settings sayfası */
+
+.admin-panel-content:has(.admin-settings-page) {
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.admin-settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 80rem;
+}
+
+/* —— Sayfa üst alanı —— */
+
+.admin-settings-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.admin-settings-header__intro {
+  flex: 1 1 16rem;
+  min-width: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-settings-header__title {
+  margin: 0;
+  font-size: var(--admin-font-page-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.admin-settings-header__description {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-base);
+  line-height: 1.55;
+}
+
+.admin-settings-header__actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1rem;
+}
+
+.admin-settings-header__dirty {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #9a6700;
+  font-size: var(--admin-font-label);
+  font-weight: 500;
+}
+
+.admin-settings-header__dirty::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #d4a017;
+  flex-shrink: 0;
+}
+
+.admin-settings-header__saved {
+  color: var(--admin-muted);
+  font-size: var(--admin-font-label);
+}
+
+.admin-settings-header__save {
+  padding: 0.35rem 0.7rem;
+  font-size: var(--admin-font-base);
+  font-weight: 600;
+  line-height: 1.25;
+  min-height: var(--admin-control-height);
+}
+
+/* —— İki sütunlu gövde —— */
+
+.admin-settings-body {
+  display: grid;
+  grid-template-columns: minmax(13.75rem, 15rem) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.admin-settings-content {
+  min-width: 0;
+}
+
+.admin-settings-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* —— Sol navigasyon —— */
+
+.admin-settings-nav {
+  position: sticky;
+  top: calc(var(--admin-topbar-height) + 1rem);
+  padding: 0.65rem;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.admin-settings-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-settings-nav__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius-sm);
+  background: transparent;
+  color: var(--admin-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-settings-nav__item:hover {
+  background: var(--admin-surface-muted);
+}
+
+.admin-settings-nav__item:focus-visible {
+  outline: 2px solid var(--admin-focus);
+  outline-offset: 2px;
+}
+
+.admin-settings-nav__item--active {
+  border-color: #c5d9eb;
+  background: var(--admin-primary-soft);
+  color: var(--admin-primary);
+}
+
+.admin-settings-nav__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--admin-radius-sm);
+  background: rgba(255, 255, 255, 0.65);
+  color: inherit;
+}
+
+.admin-settings-nav__item--active .admin-settings-nav__icon {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.admin-settings-nav__text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.admin-settings-nav__label {
+  font-size: var(--admin-font-base);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.admin-settings-nav__description {
+  color: var(--admin-muted);
+  font-size: var(--admin-font-meta);
+  line-height: 1.35;
+}
+
+.admin-settings-nav__item--active .admin-settings-nav__description {
+  color: #4a6f8f;
+}
+
+/* —— Bölüm kartları —— */
+
+.admin-settings-section-card {
+  padding: 0.9rem 1rem;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.admin-settings-section-card__header {
+  margin-bottom: 1.1rem;
+}
+
+.admin-settings-section-card__title {
+  margin: 0 0 0.35rem;
+  font-size: var(--admin-font-section);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.admin-settings-section-card__description {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-base);
+  line-height: 1.5;
+}
+
+.admin-settings-section-card__body {
+  min-width: 0;
+}
+
+/* —— Form grid ve alanlar —— */
+
+.admin-settings-form-grid {
+  display: grid;
+  gap: 1rem 1.15rem;
+  align-items: start;
+}
+
+.admin-settings-form-grid--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.admin-settings-form-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-settings-form-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.admin-settings-field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.admin-settings-field--full {
+  grid-column: 1 / -1;
+}
+
+.admin-settings-field__label {
+  font-size: var(--admin-font-base);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--admin-text);
+}
+
+.admin-settings-field__required {
+  color: var(--admin-danger);
+}
+
+.admin-settings-field__hint {
+  margin: -0.15rem 0 0;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-meta);
+  line-height: 1.45;
+}
+
+.admin-settings-field__error {
+  margin: 0;
+  color: var(--admin-danger);
+  font-size: var(--admin-font-meta);
+  line-height: 1.4;
+}
+
+.admin-settings-input {
+  width: 100%;
+  min-height: var(--admin-control-height);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  padding: 0.4rem 0.7rem;
+  font: inherit;
+  font-size: var(--admin-font-base);
+  color: var(--admin-text);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-settings-input:focus-visible {
+  outline: none;
+  border-color: var(--admin-focus);
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.15);
+}
+
+.admin-settings-input:disabled,
+.admin-settings-input--readonly {
+  background: var(--admin-surface-muted);
+  color: #4a5568;
+  border-color: var(--admin-border);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.admin-settings-textarea {
+  resize: vertical;
+  min-height: 4.25rem;
+  line-height: 1.5;
+}
+
+.admin-settings-textarea--tall {
+  min-height: 5.5rem;
+}
+
+.admin-settings-input-icon-wrap {
+  position: relative;
+}
+
+.admin-settings-input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  color: var(--admin-muted);
+  pointer-events: none;
+}
+
+.admin-settings-input--with-icon {
+  padding-left: 2.35rem;
+}
+
+/* —— Upload kartları —— */
+
+.admin-settings-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-settings-upload-card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.85rem 0.95rem;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.admin-settings-upload-card__header {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.admin-settings-upload-card__title {
+  margin: 0;
+  font-size: var(--admin-font-section);
+  font-weight: 600;
+}
+
+.admin-settings-upload-card__purpose {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-base);
+  line-height: 1.45;
+}
+
+.admin-settings-upload-card__hint {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-meta);
+  line-height: 1.4;
+}
+
+.admin-settings-upload-card__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px dashed var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface-muted);
+}
+
+.admin-settings-upload-card__preview--logo {
+  min-height: 6.5rem;
+  padding: 0.85rem 1rem;
+}
+
+.admin-settings-upload-card__preview--favicon {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-inline: auto;
+}
+
+.admin-settings-upload-card__preview--og {
+  aspect-ratio: 1.91 / 1;
+  width: 100%;
+}
+
+.admin-settings-upload-card__image {
+  display: block;
+  max-width: 100%;
+}
+
+.admin-settings-upload-card__image--logo {
+  max-height: 4.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.admin-settings-upload-card__image--favicon {
+  width: 3rem;
+  height: 2.25rem;
+  object-fit: contain;
+}
+
+.admin-settings-upload-card__image--og {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-settings-upload-card__empty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: inherit;
+  padding: 1rem;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-base);
+  text-align: center;
+}
+
+.admin-settings-upload-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.admin-settings-upload-card__file {
+  cursor: pointer;
+}
+
+.admin-settings-upload-card__filename {
+  flex: 1 1 100%;
+  color: var(--admin-muted);
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+/* —— SEO düzeni —— */
+
+.admin-settings-seo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.admin-settings-seo-main {
+  min-width: 0;
+}
+
+.admin-settings-seo-aside {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.admin-settings-seo-preview,
+.admin-settings-seo-checklist {
+  padding: 0.85rem 0.95rem;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.admin-settings-seo-aside .admin-settings-seo-preview {
+  position: sticky;
+  top: calc(var(--admin-topbar-height) + 1rem);
+}
+
+.admin-settings-seo-preview__title,
+.admin-settings-seo-checklist__title {
+  margin: 0 0 0.35rem;
+  font-size: var(--admin-font-section);
+  font-weight: 600;
+}
+
+.admin-settings-seo-preview__note {
+  margin: 0 0 0.85rem;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-meta);
+  line-height: 1.45;
+}
+
+.admin-settings-seo-preview__card {
+  padding: 0.85rem;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  background: #fff;
+}
+
+.admin-settings-seo-preview__url {
+  margin: 0 0 0.2rem;
+  color: #1a0dab;
+  font-size: var(--admin-font-meta);
+  line-height: 1.35;
+  word-break: break-all;
+}
+
+.admin-settings-seo-preview__result-title {
+  margin: 0 0 0.25rem;
+  color: #1a0dab;
+  font-size: var(--admin-font-section);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.admin-settings-seo-preview__description {
+  margin: 0;
+  color: #4d5156;
+  font-size: var(--admin-font-base);
+  line-height: 1.45;
+}
+
+.admin-settings-seo-preview__image {
+  margin-top: 0.65rem;
+  width: 100%;
+  max-height: 8rem;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.admin-settings-seo-counters {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-settings-seo-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.admin-settings-seo-counter__label {
+  color: var(--admin-muted);
+  font-size: 0.8rem;
+}
+
+.admin-settings-seo-counter__value {
+  font-size: var(--admin-font-label);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--admin-text);
+}
+
+.admin-settings-seo-checklist__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-settings-seo-checklist__summary {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-settings-seo-checklist__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.admin-settings-seo-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--admin-muted);
+  font-size: var(--admin-font-base);
+  line-height: 1.45;
+}
+
+.admin-settings-seo-checklist__item--done {
+  color: var(--admin-text);
+}
+
+.admin-settings-seo-checklist__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  margin-top: 0.1rem;
+  color: var(--admin-border-strong);
+}
+
+.admin-settings-seo-checklist__item--done .admin-settings-seo-checklist__icon {
+  color: #2e7d32;
+}
+
+/* —— Responsive —— */
+
+@media (max-width: 1200px) {
+  .admin-settings-form-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .admin-settings-body {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .admin-settings-nav {
+    position: static;
+    padding: 0.5rem;
+    overflow: hidden;
+  }
+
+  .admin-settings-nav__list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-settings-nav__item {
+    flex: 0 0 auto;
+    min-width: 11.5rem;
+    scroll-snap-align: start;
+  }
+
+  .admin-settings-nav__description {
+    display: none;
+  }
+
+  .admin-settings-seo-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-settings-seo-aside .admin-settings-seo-preview {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-settings-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-settings-header__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-settings-header__save {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-settings-form-grid--2,
+  .admin-settings-form-grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-settings-upload-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-settings-nav__item,
+  .admin-settings-input {
+    transition: none;
+  }
+}

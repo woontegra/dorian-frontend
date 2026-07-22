@@ -22,7 +22,7 @@ body {
 }
 
 .page {
-  min-height: 100vh;
+  min-height: calc(100vh - 4.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,11 +31,35 @@ body {
   text-align: center;
 }
 
+.page--home {
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  text-align: initial;
+}
+
+.page__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+}
+
 .page h1 {
   margin: 0 0 0.75rem;
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.page__brand {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1a1f2c;
 }
 
 .page p {

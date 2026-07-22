@@ -1,0 +1,410 @@
+.site-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Stacking scale (public shell):
+  - header sticky bar: 40
+  - desktop dropdown (inside header context): 50
+  - mobile overlay (portaled to body): 100
+*/
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(26, 31, 44, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.site-header__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  text-decoration: none;
+  color: #1a1f2c;
+}
+
+.site-header__logo {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  max-width: 11rem;
+  object-fit: contain;
+}
+
+.site-header__brand-text {
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 12rem;
+}
+
+.site-header__menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(26, 31, 44, 0.12);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: #1a1f2c;
+  cursor: pointer;
+}
+
+.site-header__menu-button:focus-visible {
+  outline: 2px solid #2f5b8f;
+  outline-offset: 2px;
+}
+
+.site-nav--desktop {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.site-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.35rem;
+}
+
+.site-nav__item {
+  position: relative;
+}
+
+.site-nav__trigger-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.site-nav__link,
+.site-nav__button,
+.site-nav__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.3rem 0.65rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: #1a1f2c;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.site-nav__label--inert {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.site-nav__link:hover,
+.site-nav__button:hover,
+.site-nav__chevron:hover {
+  background: rgba(47, 91, 143, 0.08);
+}
+
+.site-nav__link:focus-visible,
+.site-nav__button:focus-visible,
+.site-nav__chevron:focus-visible {
+  outline: 2px solid #2f5b8f;
+  outline-offset: 2px;
+}
+
+.site-nav__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: #3d4658;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.site-nav__item--has-children.is-open > .site-nav__trigger-row .site-nav__chevron {
+  transform: rotate(180deg);
+}
+
+.site-nav__dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  z-index: 50;
+  min-width: 14rem;
+  max-width: min(20rem, 80vw);
+  padding: 0.45rem;
+  border: 1px solid rgba(26, 31, 44, 0.1);
+  border-radius: 0.7rem;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(18, 24, 34, 0.12);
+}
+
+.site-nav__dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.site-nav__dropdown-link {
+  display: block;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.45rem;
+  color: #1a1f2c;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.site-nav__dropdown-link:hover {
+  background: rgba(47, 91, 143, 0.08);
+}
+
+.site-nav__dropdown-link:focus-visible {
+  outline: 2px solid #2f5b8f;
+  outline-offset: 1px;
+}
+
+.site-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-mobile__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(18, 24, 34, 0.45);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.site-mobile__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, 100%);
+  max-width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: -10px 0 28px rgba(18, 24, 34, 0.14);
+  pointer-events: auto;
+}
+
+.site-mobile__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(26, 31, 44, 0.08);
+  background: #ffffff;
+}
+
+.site-mobile__title {
+  margin: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #1a1f2c;
+}
+
+.site-mobile__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid rgba(26, 31, 44, 0.12);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #1a1f2c;
+  cursor: pointer;
+}
+
+.site-mobile__close:focus-visible,
+.site-mobile__link:focus-visible,
+.site-mobile__chevron:focus-visible,
+.site-mobile__accordion-label:focus-visible,
+.site-mobile__child-link:focus-visible {
+  outline: 2px solid #2f5b8f;
+  outline-offset: 2px;
+}
+
+.site-mobile__nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.75rem 0.85rem 1.5rem;
+  background: #ffffff;
+}
+
+.site-mobile__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.site-mobile__row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.site-mobile__link,
+.site-mobile__accordion-label,
+.site-mobile__inert {
+  flex: 1;
+  display: block;
+  min-width: 0;
+  padding: 0.65rem 0.65rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #1a1f2c;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.site-mobile__inert {
+  opacity: 0.7;
+}
+
+.site-mobile__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #3d4658;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.site-mobile__item.is-open > .site-mobile__row .site-mobile__chevron {
+  transform: rotate(180deg);
+}
+
+/* display:flex would defeat the HTML hidden attribute — keep closed panels fully collapsed. */
+.site-mobile__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  gap: 0.1rem;
+  border-left: 2px solid rgba(47, 91, 143, 0.18);
+}
+
+.site-mobile__children:not([hidden]) {
+  display: flex;
+  margin: 0.1rem 0 0.25rem;
+  padding: 0 0 0 0.5rem;
+}
+
+.site-mobile__children[hidden] {
+  display: none !important;
+}
+
+.site-mobile__child-link {
+  display: block;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.45rem;
+  color: #2a3344;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.site-mobile__link:hover,
+.site-mobile__accordion-label:hover,
+.site-mobile__child-link:hover,
+.site-mobile__chevron:hover {
+  background: rgba(47, 91, 143, 0.08);
+}
+
+@media (max-width: 900px) {
+  .site-nav--desktop {
+    display: none;
+  }
+
+  .site-header__menu-button {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 901px) {
+  .site-mobile {
+    display: none;
+  }
+}
